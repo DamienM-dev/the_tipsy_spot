@@ -9,11 +9,17 @@ import { Colors } from "@/constants/Colors"
 import ButtonHomeComponent from "./ButtonHomeComponent"
 
 const HomeScreen = () => {
-    const buttonProps = {
+    const buttonPropsRegistration = {
         buttonBorderColor: Colors.secondary.red,
         buttonBackgroundColor: Colors.primary.beige,
         textColor: Colors.secondary.red,
         textContaint: "S'inscrire gratuitement",
+    }
+    const buttonPorpsMail = {
+        buttonBorderColor: Colors.primary.beige,
+        buttonBackgroundColor: Colors.secondary.red,
+        textColor: Colors.primary.beige,
+        textContaint: "Continuer avec l'email",
     }
     return(
        <View style={styles.containerPrincipal}>
@@ -22,7 +28,10 @@ const HomeScreen = () => {
                 source={require('../../assets/images/illustration_temp_accueil.jpg')}
                 style={styles.imageHome} />
             </View>
-            <ButtonHomeComponent {...buttonProps}/>
+            <View style={styles.blockButtonsHome}>
+                <ButtonHomeComponent {...buttonPropsRegistration}/>
+                <ButtonHomeComponent {...buttonPorpsMail} />
+            </View>
             
        </View>
 
@@ -55,7 +64,10 @@ const styles = StyleSheet.create({
         fontSize:20,
         fontWeight:"bold",
         paddingVertical:14,
-    } as TextStyle
+    } as TextStyle,
+    blockButtonsHome: {
+marginTop:-28
+    }
     })
 
 export default HomeScreen;

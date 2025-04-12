@@ -29,11 +29,12 @@ const styles = StyleSheet.create({
         borderWidth:2,
         borderRadius:1000,
         marginHorizontal:45,
+        marginBottom:30,
         alignItems:"center",
     } as ViewStyle,
     buttonTextHome:{
         fontFamily:"textFonts",
-        fontSize:20,
+        fontSize:16,
         fontWeight:"bold",
         paddingVertical:14,
     } as TextStyle
