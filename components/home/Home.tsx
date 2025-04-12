@@ -1,8 +1,20 @@
-import { Image, ImageStyle, StyleSheet, Text, View, ViewStyle } from "react-native"
+//REACT NATIVE
 
+import { Image, ImageStyle, StyleSheet, TextStyle, View, ViewStyle } from "react-native"
+
+// CONSTANT
 import { Colors } from "@/constants/Colors"
 
+//COMPOSANT
+import ButtonHomeComponent from "./ButtonHomeComponent"
+
 const HomeScreen = () => {
+    const buttonProps = {
+        buttonBorderColor: Colors.secondary.red,
+        buttonBackgroundColor: Colors.primary.beige,
+        textColor: Colors.secondary.red,
+        textContaint: "S'inscrire gratuitement",
+    }
     return(
        <View style={styles.containerPrincipal}>
             <View style={styles.containerImage}>
@@ -10,9 +22,8 @@ const HomeScreen = () => {
                 source={require('../../assets/images/illustration_temp_accueil.jpg')}
                 style={styles.imageHome} />
             </View>
-            <View style={styles.buttonHome}>
-                <Text style={styles.buttonTextHome}>test</Text>
-            </View>
+            <ButtonHomeComponent {...buttonProps}/>
+            
        </View>
 
 
@@ -44,7 +55,7 @@ const styles = StyleSheet.create({
         fontSize:20,
         fontWeight:"bold",
         paddingVertical:14,
-    } as ViewStyle
+    } as TextStyle
     })
 
 export default HomeScreen;
