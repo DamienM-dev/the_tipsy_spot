@@ -1,8 +1,6 @@
 // LIBRAIRY REACT NATIVE
 import { StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native"
 
-// CONSTANT
- import { Colors } from "@/constants/Colors"
 
  // TYPES
 
@@ -15,7 +13,12 @@ import { StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native"
 
 
 
-const ButtonHomeComponent = ({buttonBackgroundColor, buttonBorderColor, textColor, textContaint}:buttonHomeProps)=> {
+const ButtonHomeComponent = ({
+    buttonBackgroundColor, 
+    buttonBorderColor, 
+    textColor, 
+    textContaint
+}:buttonHomeProps)=> {
     return (
         <View style={[styles.buttonHome, {backgroundColor:buttonBackgroundColor,borderColor:buttonBorderColor}]}>
             <Text style={[styles.buttonTextHome, {color:textColor}]}>{textContaint}</Text>

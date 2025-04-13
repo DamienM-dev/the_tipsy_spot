@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         } as ImageStyle,
     buttonHome:{
         borderColor:Colors.secondary.red,
-        borderWidth:2,
+        borderWidth:1,
         borderRadius:1000,
         marginHorizontal:45,
         alignItems:"center",
