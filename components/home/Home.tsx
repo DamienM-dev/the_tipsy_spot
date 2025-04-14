@@ -8,7 +8,7 @@ import { Colors } from "@/constants/Colors"
 //COMPOSANT
 import ButtonHomeComponent from "./ButtonHomeComponent"
 
-const HomeScreen = () => {
+const HomeScreen = (props:any) => {
     const buttonPropsRegistration = {
         buttonBorderColor: Colors.secondary.red,
         buttonBackgroundColor: Colors.primary.beige,
@@ -29,8 +29,8 @@ const HomeScreen = () => {
                 style={styles.imageHome} />
             </View>
             <View style={styles.blockButtonsHome}>
-                <ButtonHomeComponent {...buttonPropsRegistration}/>
-                <ButtonHomeComponent {...buttonPorpsMail} />
+                <ButtonHomeComponent {...buttonPropsRegistration} pageToNavigate=""/>
+                <ButtonHomeComponent {...buttonPorpsMail} pageToNavigate="ListProducts"/>
             </View>
             
        </View>

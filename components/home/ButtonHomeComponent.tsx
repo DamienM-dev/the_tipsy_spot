@@ -1,15 +1,19 @@
 // LIBRAIRY REACT NATIVE
-import { StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native"
+import { StyleSheet, Text, TextStyle, TouchableOpacity, ViewStyle } from "react-native"
 
+// REACT NAVIGATION
+import { useNavigation } from "@react-navigation/native";
 
- // TYPES
-
- type buttonHomeProps = {
+// TYPES
+type buttonHomeProps = {
     buttonBorderColor: string;
     buttonBackgroundColor: string;
     textColor: string;
     textContaint:string;
+    pageToNavigate:string;
  }
+
+
 
 
 
@@ -17,12 +21,17 @@ const ButtonHomeComponent = ({
     buttonBackgroundColor, 
     buttonBorderColor, 
     textColor, 
-    textContaint
+    textContaint,
+    pageToNavigate
 }:buttonHomeProps)=> {
+
+    const navigation = useNavigation();
     return (
-        <View style={[styles.buttonHome, {backgroundColor:buttonBackgroundColor,borderColor:buttonBorderColor}]}>
+        <TouchableOpacity style={[styles.buttonHome, {backgroundColor:buttonBackgroundColor,borderColor:buttonBorderColor}]}
+        onPress={()=>navigation.navigate(pageToNavigate)}
+        >
             <Text style={[styles.buttonTextHome, {color:textColor}]}>{textContaint}</Text>
-        </View>
+        </TouchableOpacity>
     )
 }
 
