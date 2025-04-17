@@ -29,7 +29,8 @@ const StackNavigator = () => {
             <StackNavigatorContainer.Screen name='Home' component={HomeScreen} options={
                 {
                     title:"Accueil",
-                    ...styleNavigation
+                    ...styleNavigation,
+                    headerShown:false,
                    
             }} />
             <StackNavigatorContainer.Screen name='ListProducts' component={ListProducts} options={{title:"Cocktails", ...styleNavigation}} />

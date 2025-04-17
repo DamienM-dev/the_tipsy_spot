@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, ViewStyle } from "react-native"
 //CONSTANT
 
 import { Colors } from "@/constants/Colors"
+import IconesTop from "./IconesTop";
 
 
 // TYPES
@@ -28,6 +29,9 @@ const ListProducts = () => {
                 <View>
                     <Text>Favorites</Text>
                 </View>
+            </View>
+            <View>
+                <IconesTop />
             </View>
         </View>
     )
