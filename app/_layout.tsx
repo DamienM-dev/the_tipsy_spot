@@ -5,7 +5,7 @@
 
 import {useFonts} from 'expo-font'
 import { useEffect } from 'react';
-import { SplashScreen } from 'expo-router';
+import { Slot, SplashScreen } from 'expo-router';
 import HomeScreen from '@/components/home/Home';
 import StackNavigator from '@/components/navigation/Navigators';
 
@@ -19,27 +19,27 @@ import StackNavigator from '@/components/navigation/Navigators';
 
 
 
-export default function RootLayout() {
+export default function Layout() {
 
-  const[loaded, error] = useFonts({
+  const[fontsLoaded] = useFonts({
 
     'textFonts':require('../assets/fonts/Manrope/Manrope-Regular.ttf'),
-    'textTitle':require('../assets/fonts/Space grotesk/SpaceGrotesk-Regular.ttf')
+    'textTitle':require('../assets/fonts/SpaceGrotesk/SpaceGrotesk-Regular.ttf')
   });
 
   useEffect(() => {
-    if(loaded || error) {
+    if(fontsLoaded) {
       SplashScreen.hideAsync()
     }
-  }, [error,loaded])
+  }, [fontsLoaded])
 
-  if(!loaded && !error) {
+  if(!fontsLoaded) {
     return null
   }
   
   return (
     <>
-      <StackNavigator />
+      <Slot />
     </>
   )
 }

@@ -4,7 +4,12 @@ import { StyleSheet, Text, View, ViewStyle } from "react-native"
 //CONSTANT
 
 import { Colors } from "@/constants/Colors"
+
+// COMPONENT
+
 import IconesTop from "./IconesTop";
+import CocktailMomentView from "./CocktailMomentView";
+import ByGenreView from "./ByGenreView";
 
 
 // TYPES
@@ -30,9 +35,13 @@ const ListProducts = () => {
                     <Text>Favorites</Text>
                 </View>
             </View>
-            <View>
+            <View style={styles.containerIcones}>
+                <IconesTop />
+                <IconesTop />
                 <IconesTop />
             </View>
+            <CocktailMomentView />
+            <ByGenreView />
         </View>
     )
 }
@@ -50,7 +59,10 @@ containerDiscovey:{
 styleSelected: {
     borderBottomColor: Colors.secondary.red,
     borderBottomWidth:1
-} as ViewStyle
+} as ViewStyle,
+containerIcones: {
+    flexDirection:"row",
+    }
 })
 
 export default ListProducts

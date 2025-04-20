@@ -31,5 +31,6 @@ export const Colors = {
   },
   textColor: {
     black:"#242124"
-  }
+  },
+  
 };
