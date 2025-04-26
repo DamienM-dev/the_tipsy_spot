@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     } as ViewStyle,
     buttonTextHome:{
         color:Colors.secondary.red,
-        fontFamily:"textFonts",
+        fontFamily:"Manrope-Regular",
         fontSize:20,
         fontWeight:"bold",
         paddingVertical:14,

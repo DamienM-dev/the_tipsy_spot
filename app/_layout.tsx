@@ -23,8 +23,8 @@ export default function Layout() {
 
   const[fontsLoaded] = useFonts({
 
-    'textFonts':require('../assets/fonts/Manrope/Manrope-Regular.ttf'),
-    'textTitle':require('../assets/fonts/SpaceGrotesk/SpaceGrotesk-Regular.ttf')
+    'Manrope-Regular':require('../assets/fonts/Manrope/Manrope-Regular.ttf'),
+    'SpaceGrotesk-Regular':require('../assets/fonts/SpaceGrotesk/SpaceGrotesk-Regular.ttf')
   });
 
   useEffect(() => {

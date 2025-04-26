@@ -1,38 +1,58 @@
 import { Colors } from "@/constants/Colors"
 import { Image, StyleSheet, Text, View } from "react-native"
 
+// DATA
+
+import { supabase } from "@/lib/supabase"
+import { useEffect, useState } from "react"
+
 // TYPE
 
 type iconeTop = {
     
-    image:any,
-    name:string
+    image:string,
+    type_of_drink:string
 }
 
 
 
 const IconesTop = () => {
 
-    const icones:iconeTop[] = [
-        {
+    const [fetchError, setFetchError] = useState(null)
+    const [icones, setIcones] = useState<iconeTop[]>([]);
 
-            name:"Rhum",
-            image:require("../../assets/images/icones/rhum.png")
-        }
-]
+    useEffect(() => {
+        const fetchIcones = async() => {
+
+            const {data:drinks, error} = await supabase.from('drinks').select('type_of_drink, image')
+
+            if(error) {
+                setFetchError('erreur lors de la récupération de drinks');
+                console.error(error)
+          
+            } else {
+
+                setIcones(drinks || []);
+                setFetchError(null)
+            }
+        };
+        fetchIcones()
+    }, [])
+
 
     return(
-        <View>
-            
+        <View style={styles.containerGenralIcones}>
             {
                 icones.map((icone, index) =>(
 
+                   
             <View key={index} style={styles.containerIcone}>
             
-                <Image source={icone.image} style={styles.image} />
-                <Text style={styles.text}>{icone.name}</Text>
+                <Image source={{uri:icone.image}} style={styles.image} />
+                <Text style={styles.text}>{icone.type_of_drink}</Text>
             </View>
                 ))
+                
             }
         
         </View>
@@ -43,6 +63,9 @@ const IconesTop = () => {
 // STYLE
 
 const styles = StyleSheet.create({
+containerGenralIcones: {
+flexDirection:"row",
+},
 containerIcone: {
 marginTop:27,
 marginLeft:27,
@@ -64,7 +87,7 @@ text:{
     color:Colors.textColor.black,
     fontSize:14,
     fontWeight:"bold",
-    fontFamily:'textTitle'
+    fontFamily:'SpaceGrotesk-Regular'
 }
 })
 

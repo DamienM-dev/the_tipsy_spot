@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         alignItems:"center",
     } as ViewStyle,
     buttonTextHome:{
-        fontFamily:"textFonts",
+        fontFamily:"Manrope-Regular",
         fontSize:16,
         fontWeight:"bold",
         paddingVertical:14,

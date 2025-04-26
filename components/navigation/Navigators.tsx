@@ -13,7 +13,7 @@ import { Colors } from '@/constants/Colors';
 const StackNavigatorContainer = createStackNavigator();
 const styleNavigation = {
     headerBackTitleStyle:{
-        fontFamily:"textFonts"
+        fontFamily:"Manrope-Regular"
 },
     headerTintColor:Colors.textColor.black,
     headerStyle:{

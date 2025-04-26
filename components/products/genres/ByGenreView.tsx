@@ -1,4 +1,6 @@
 import { Text, View } from "react-native"
+
+import { StylesSame } from "@/constants/StyleSame"
 import ByGenre from "./ByGenre"
 
 // type
@@ -7,8 +9,8 @@ const title:string= "Par genre"
 
 const ByGenreView = () => {
     return(
-        <View>
-            <Text>{title}</Text>
+        <View >
+            <Text style={StylesSame.titleSubCategory}>{title}</Text>
             <ByGenre />
         </View>
     )

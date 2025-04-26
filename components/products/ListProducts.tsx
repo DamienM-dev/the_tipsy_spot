@@ -8,8 +8,10 @@ import { Colors } from "@/constants/Colors"
 // COMPONENT
 
 import IconesTop from "./IconesTop";
-import CocktailMomentView from "./CocktailMomentView";
-import ByGenreView from "./ByGenreView";
+
+import ByGenreView from "./genres/ByGenreView";
+import CocktailMomentView from "./moments/CocktailMomentView";
+
 
 
 // TYPES
@@ -36,8 +38,6 @@ const ListProducts = () => {
                 </View>
             </View>
             <View style={styles.containerIcones}>
-                <IconesTop />
-                <IconesTop />
                 <IconesTop />
             </View>
             <CocktailMomentView />
