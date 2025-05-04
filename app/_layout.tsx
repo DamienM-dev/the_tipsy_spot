@@ -5,17 +5,7 @@
 
 import {useFonts} from 'expo-font'
 import { useEffect } from 'react';
-import { Slot, SplashScreen } from 'expo-router';
-import HomeScreen from '@/components/home/Home';
-import StackNavigator from '@/components/navigation/Navigators';
-
-//REACT NAVIGATION
-
-
-
-
- 
-
+import { Slot, SplashScreen,} from 'expo-router';
 
 
 
@@ -38,8 +28,8 @@ export default function Layout() {
   }
   
   return (
-    <>
-      <Slot />
-    </>
+  <>
+  <Slot />
+  </>
   )
 }

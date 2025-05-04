@@ -2,12 +2,28 @@
 import React from 'react';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
-import StackNavigator from '@/components/navigation/Navigators';
+import { Stack } from 'expo-router';
+import { Colors } from '@/constants/Colors';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  
+  const styleNavigation = {
+    headerBackTitleStyle:{
+        fontFamily:"Manrope-Regular"
+},
+    headerTintColor:Colors.textColor.black,
+    headerStyle:{
+        borderBottomColor: Colors.secondary.red,
+        borderBottomWidth:1
+    }
+ 
+}
 
   return (
-   <StackNavigator />
+   <Stack>
+    <Stack.Screen name='HomeScreen' options={{title:'Home', styleNavigation}} />
+    <Stack.Screen name='ListProductsScreen'options={{title:"Cocktails", styleNavigation}} />
+    <Stack.Screen name="ProductScreen" />
+   </Stack>
   );
 }

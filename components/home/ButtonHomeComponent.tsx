@@ -1,8 +1,7 @@
 // LIBRAIRY REACT NATIVE
-import { StyleSheet, Text, TextStyle, TouchableOpacity, ViewStyle } from "react-native"
+import { useRouter } from "expo-router";
+import { Alert, StyleSheet, Text, TextStyle, TouchableOpacity, ViewStyle } from "react-native"
 
-// REACT NAVIGATION
-import { useNavigation } from "@react-navigation/native";
 
 // TYPES
 type buttonHomeProps = {
@@ -13,10 +12,6 @@ type buttonHomeProps = {
     pageToNavigate:string;
  }
 
-
-
-
-
 const ButtonHomeComponent = ({
     buttonBackgroundColor, 
     buttonBorderColor, 
@@ -25,10 +20,23 @@ const ButtonHomeComponent = ({
     pageToNavigate
 }:buttonHomeProps)=> {
 
-    const navigation = useNavigation();
+    const router = useRouter()
+
+    const handleNavigate = () => {
+        console.log("Navigating to:", pageToNavigate);
+        if(!pageToNavigate) {
+            Alert.alert('Navigation', "Lien de navigation manquant")
+            return;
+        }
+    
+            router.push(`${pageToNavigate}`)
+        
+    }
+
+    
     return (
         <TouchableOpacity style={[styles.buttonHome, {backgroundColor:buttonBackgroundColor,borderColor:buttonBorderColor}]}
-        onPress={()=>navigation.navigate(pageToNavigate)}
+        onPress={handleNavigate}
         >
             <Text style={[styles.buttonTextHome, {color:textColor}]}>{textContaint}</Text>
         </TouchableOpacity>

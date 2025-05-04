@@ -7,8 +7,10 @@ import { Colors } from "@/constants/Colors"
 
 //COMPOSANT
 import ButtonHomeComponent from "./ButtonHomeComponent"
+import { useNavigation } from "expo-router"
+import { useEffect } from "react"
 
-const HomeScreen = (props:any) => {
+const Home = (props:any) => {
     const buttonPropsRegistration = {
         buttonBorderColor: Colors.secondary.red,
         buttonBackgroundColor: Colors.primary.beige,
@@ -21,6 +23,9 @@ const HomeScreen = (props:any) => {
         textColor: Colors.primary.beige,
         textContaint: "Continuer avec l'email",
     }
+
+
+
     return(
        <View style={styles.containerPrincipal}>
             <View style={styles.containerImage}>
@@ -29,8 +34,8 @@ const HomeScreen = (props:any) => {
                 style={styles.imageHome} />
             </View>
             <View style={styles.blockButtonsHome}>
-                <ButtonHomeComponent {...buttonPropsRegistration} pageToNavigate=""/>
-                <ButtonHomeComponent {...buttonPorpsMail} pageToNavigate="ListProducts"/>
+                <ButtonHomeComponent {...buttonPropsRegistration} pageToNavigate="/ListProductsScreen"/>
+                <ButtonHomeComponent {...buttonPorpsMail} pageToNavigate="/ListProductsScreen"/>
             </View>
             
        </View>
@@ -70,4 +75,4 @@ marginTop:-28
     }
     })
 
-export default HomeScreen;
+export default Home;

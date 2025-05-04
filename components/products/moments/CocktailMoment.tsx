@@ -1,13 +1,23 @@
 import { Colors } from "@/constants/Colors"
 import { StylesSame } from "@/constants/StyleSame"
-import { Image, ImageStyle, StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native"
+import { useRouter } from "expo-router"
+import { useState } from "react"
+import { Image, StyleSheet, Text, TextStyle, TouchableOpacity, ViewStyle } from "react-native"
+
 
 const CocktailMoment = () => {
+
+    const router = useRouter();
+
+
+      
+   
     return (
-        <View style={[styles.containerCocktailMoment, StylesSame.cardsCocktail]}>
+        <TouchableOpacity style={[styles.containerCocktailMoment, StylesSame.cardsCocktail]}
+        onPress={() => router.push('/ProductScreen')} >
             <Image source={require("../../../assets/images/negroni.jpg")} style={StylesSame.imageCocktailCards}/>
             <Text style={[styles.titleCocktailMoment, StylesSame.titleCocktailCards]}>Negroni</Text>
-        </View>
+        </TouchableOpacity>
     )
 }
 

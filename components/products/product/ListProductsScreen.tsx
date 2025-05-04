@@ -7,10 +7,10 @@ import { Colors } from "@/constants/Colors"
 
 // COMPONENT
 
-import IconesTop from "./IconesTop";
+import IconesTop from "../IconesTop";
 
-import ByGenreView from "./genres/ByGenreView";
-import CocktailMomentView from "./moments/CocktailMomentView";
+import ByGenreView from "../genres/ByGenreView";
+import CocktailMomentView from "../moments/CocktailMomentView";
 
 
 
