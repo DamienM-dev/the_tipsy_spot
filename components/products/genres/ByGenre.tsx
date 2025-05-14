@@ -1,20 +1,62 @@
 
 import { Colors } from "@/constants/Colors"
 import { StylesSame } from "@/constants/StyleSame"
-import { Image, StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native"
+import { supabase } from "@/lib/supabase"
+import { useEffect, useState } from "react"
+import { Image, ScrollView, StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native"
+
 
 // type
 
-let name:string = "Les fruitées"
+type genreCocktail = {
+    id:number,
+    type:string,
+    image:string,
+    alt:string
+}
 
 
 
 const ByGenre = () => {
+
+    const [error, setFetchError] = useState(null);
+    const [genresCocktail, setGenreCocktail] = useState<genreCocktail[]>([])
+    
+    useEffect(() => {
+        const fetchGenre = async() => {
+    
+            const {data:genres, error} = await supabase.from('generalType').select('id, type, image, alt');
+    
+            if(error) {
+                setFetchError(error)
+                console.error("Une erreur lors de la récupération des genre")
+            } else {
+                setGenreCocktail(genres || [])
+                setFetchError(null)
+            }
+           
+        }
+        fetchGenre()
+    },[])
+    
     return(
+        <ScrollView>
+
+            {
+                genresCocktail.map((cocktail,index) => (
+
         <View style={[styles.containerGenre, StylesSame.cardsCocktail ]}>
-            <Image source={require('../../../assets/images/cocktail_fruitee.png')} style={StylesSame.imageCocktailCards}/>
-            <Text style={[StylesSame.titleCocktailCards, styles.titleGenre]}>{name}</Text>
+            <Image 
+                source={{uri:cocktail.image}}
+                alt={cocktail.alt} 
+                style={StylesSame.imageCocktailCards}
+                />
         </View>
+
+                ))
+            }
+
+        </ScrollView>
     )
 }
 
