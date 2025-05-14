@@ -1,5 +1,5 @@
 import { Colors } from "@/constants/Colors"
-import { Image, StyleSheet, Text, View } from "react-native"
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
 // DATA
 
@@ -41,21 +41,27 @@ const IconesTop = () => {
 
 
     return(
-        <View style={styles.containerGenralIcones}>
+        <ScrollView 
+            horizontal
+            showsHorizontalScrollIndicator ={false}
+            style={styles.containerGenralIcones}>
             {
                 icones.map((icone, index) =>(
 
-                   
-            <View key={index} style={styles.containerIcone}>
-            
-                <Image source={{uri:icone.image}} style={styles.image} />
-                <Text style={styles.text}>{icone.type_of_drink}</Text>
-            </View>
+                   <TouchableOpacity
+                        key={index}>
+
+                        <View key={index} style={styles.containerIcone}>
+                        
+                            <Image source={{uri:icone.image}} style={styles.image} />
+                            <Text style={styles.text}>{icone.type_of_drink}</Text>
+                        </View>
+                   </TouchableOpacity>
                 ))
                 
             }
         
-        </View>
+        </ScrollView>
     )
 
 }

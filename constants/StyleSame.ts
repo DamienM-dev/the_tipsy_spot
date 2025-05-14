@@ -11,8 +11,8 @@ export const StylesSame = {
         color:Colors.textColor.black
     } as TextStyle,
     cardsCocktail: {
-        width:180,
-        height:210,
+        width:140,
+        height:200,
         borderRadius:28,
         marginLeft:25,
         marginTop:30,

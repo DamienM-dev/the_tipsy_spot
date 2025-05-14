@@ -1,5 +1,5 @@
 // REACT NATIVE
-import { StyleSheet, Text, View, ViewStyle } from "react-native"
+import { ScrollView, StyleSheet, Text, View, ViewStyle } from "react-native"
 
 //CONSTANT
 
@@ -21,6 +21,9 @@ import CocktailMomentView from "../moments/CocktailMomentView";
     value: 'Découverte' | 'Favorites';
     isSelected?: boolean;
  }
+// TEXT TYPE
+ const textDecouvert:string = "Découverts";
+ const textFavorit:string = "Favorites"
 
 
 
@@ -28,13 +31,13 @@ const ListProducts = () => {
 
 
     return(
-        <View style={styles.containerPrincipal}>
+        <ScrollView style={styles.containerPrincipal}>
             <View style={styles.containerDiscovey}>
                 <View style={styles.styleSelected}>
-                    <Text>Découvertes</Text>
+                    <Text>{textDecouvert}</Text>
                 </View>
                 <View>
-                    <Text>Favorites</Text>
+                    <Text>{textFavorit}</Text>
                 </View>
             </View>
             <View style={styles.containerIcones}>
@@ -42,7 +45,7 @@ const ListProducts = () => {
             </View>
             <CocktailMomentView />
             <ByGenreView />
-        </View>
+        </ScrollView>
     )
 }
 

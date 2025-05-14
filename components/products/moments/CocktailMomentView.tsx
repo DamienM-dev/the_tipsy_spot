@@ -1,6 +1,12 @@
-import { StyleSheet, Text, TextStyle, View } from "react-native"
+// REACT NATIVE
+
+import { ScrollView, StyleSheet, Text, View} from "react-native"
+
+// CONSTANT
 
 import { StylesSame } from "@/constants/StyleSame"
+
+// COMPONENTS
 import CocktailMoment from "./CocktailMoment"
 
 const CocktailMomentView = () => {
@@ -14,6 +20,8 @@ const CocktailMomentView = () => {
 
 
 const styles = StyleSheet.create({
+
+    
 
 })
 export default CocktailMomentView
