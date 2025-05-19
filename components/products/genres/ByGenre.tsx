@@ -3,7 +3,7 @@ import { Colors } from "@/constants/Colors"
 import { StylesSame } from "@/constants/StyleSame"
 import { supabase } from "@/lib/supabase"
 import { useEffect, useState } from "react"
-import { Image, ScrollView, StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native"
+import { Image, ImageStyle, ScrollView, StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native"
 
 
 // type
@@ -41,20 +41,23 @@ const ByGenre = () => {
     
     return(
         <ScrollView>
+            <View style={styles.containerCards}>
 
             {
-                genresCocktail.map((cocktail,index) => (
+                genresCocktail.map((cocktail) => (
 
-        <View style={[styles.containerGenre, StylesSame.cardsCocktail ]}>
+        <View key = {cocktail.id} style={[styles.containerGenre, StylesSame.cardsCocktail ]}>
             <Image 
                 source={{uri:cocktail.image}}
                 alt={cocktail.alt} 
-                style={StylesSame.imageCocktailCards}
+                style={styles.imageGenre}
                 />
         </View>
 
                 ))
             }
+            </View>
+
 
         </ScrollView>
     )
@@ -67,7 +70,19 @@ const styles = StyleSheet.create({
     containerGenre: {
         borderColor:Colors.secondary.red,
         borderWidth:1,
-    } as ViewStyle
+    } as ViewStyle,
+    imageGenre: {
+            width:"100%",
+            height:"100%",
+            borderRadius:28,
+            objectFit:"cover",
+    } as ImageStyle,
+    containerCards: {
+        display:"flex",
+        justifyContent:"center",
+        flexDirection:"row",
+        flexWrap:"wrap",
+    }
 })
 
 export default ByGenre

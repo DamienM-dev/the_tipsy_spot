@@ -28,12 +28,16 @@ const Components= ():ComponentsType[]=> {
 
     const displayComponents = temporyNames.map((temporyName) => (
        
-      <Text key={temporyName.index}>{temporyName.name}</Text>
+    <Text 
+        key={temporyName.index}
+        style={styles.textBlockComponent}>
+         <Text>-</Text>   
+         {temporyName.name}
+    </Text>
     ))
     return(
         <View style={styles.blockComponent}>
-                <Text>{displayComponents}</Text>
-            
+            {displayComponents}
         </View>
     )
 }
@@ -41,9 +45,13 @@ const Components= ():ComponentsType[]=> {
 const styles = StyleSheet.create({
     blockComponent: {
         display:"flex",
-       flexDirection:"column"
+        flexDirection:"column",
        
     } as ViewStyle, 
+    textBlockComponent: {
+        marginTop:5,
+        fontWeight:"ultralight"
+    }
 })
 
 export default Components

@@ -1,12 +1,13 @@
 import { Colors } from "@/constants/Colors"
 import { Image, ImageStyle, ScrollView, StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native"
 import Components from "./Components"
+import Recipe from "./Recipe"
 
 // TYPE
 
 const title:string = "Negroni"
-const componentText ="Composants"
-
+const componentText:string ="Composants"
+const recipeText:string = "Recette"
 const HomeProductView = () => {
     return(
         <ScrollView style={styles.containerGeneralHome}>
@@ -22,10 +23,14 @@ const HomeProductView = () => {
                 </View>
 
             </View>
-            <View>
-                <View>
-                    <Text>{componentText}</Text>
+            <View style={styles.containerGenCentral}>
+                <View style={styles.componantContainer}>
+                    <Text style={styles.componantTitle}>{componentText}</Text>
                     <Components />
+                </View>
+                <View style={styles.recipeContainer}>
+                    <Text style={styles.componantTitle}>{recipeText}</Text>
+                    <Recipe />
                 </View>
             </View>
 
@@ -41,24 +46,26 @@ const styles = StyleSheet.create({
     },
     blockImage: {
         width:"100%",
-    
     } as ViewStyle,
+
     imageStyle: {
         width:"100%",
         height:400
     } as ImageStyle,
+
     titleStyle: {
         fontSize:20,
         fontFamily:'SpaceGrotesk-Regular',
         fontWeight:"bold"
     } as TextStyle,
+
     containerBlockTitle:{
         display:"flex",
        justifyContent:"center",
        alignItems:"center",
-       width:"100%"
-
+       width:"100%",
     } as ViewStyle,
+
     blockTitle:{
         display:"flex",
        justifyContent:"center",
@@ -71,8 +78,36 @@ const styles = StyleSheet.create({
         margin:-30,
         backgroundColor:Colors.primary.beige,
     } as ViewStyle,
-})
 
+    componantContainer: {
+        width:"30%",
+        borderRightWidth:1,
+        borderRightColor:Colors.secondary.red,
+     
+    } as ViewStyle,
 
+    recipeContainer:{
+        width:"70%",
+        paddingLeft:5
+     
+    } as ViewStyle,
+
+    containerGenCentral: {
+        display:"flex",
+        flexDirection:"row",
+        width:"100%",
+        marginTop:30,
+        padding:5,
+        borderBottomWidth:1,
+        borderBottomColor:Colors.secondary.red
+
+    } as ViewStyle,
+
+    componantTitle: {
+        fontFamily:'SpaceGrotesk-Regular',
+        fontWeight:"bold",
+    } as ViewStyle,
+
+}) 
 
 export default HomeProductView
