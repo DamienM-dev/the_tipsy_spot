@@ -1,5 +1,12 @@
+// CONSTANT
+
 import { Colors } from "@/constants/Colors"
+// REACT NATIVE
+
 import { Image, ImageStyle, ScrollView, StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native"
+
+// COMPONENTS
+
 import Components from "./Components"
 import Recipe from "./Recipe"
 
@@ -8,6 +15,7 @@ import Recipe from "./Recipe"
 const title:string = "Negroni"
 const componentText:string ="Composants"
 const recipeText:string = "Recette"
+
 const HomeProductView = () => {
     return(
         <ScrollView style={styles.containerGeneralHome}>
@@ -87,9 +95,8 @@ const styles = StyleSheet.create({
     } as ViewStyle,
 
     recipeContainer:{
-        width:"70%",
-        paddingLeft:5
-     
+        width:"60%",
+        marginHorizontal:6
     } as ViewStyle,
 
     containerGenCentral: {

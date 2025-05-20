@@ -1,52 +1,68 @@
+
+// SUPABASE
+import { supabase } from "@/lib/supabase";
+
+// REACT
+import { useEffect, useState } from "react";
+
+// REACT NATIVE
 import { StyleSheet, Text, View } from "react-native";
+
+// TYPE
+
+type recipeDataType = {
+    id: number,
+    image: string,
+    name: string,
+    recipe: string[],
+    is_favorite: boolean,
+    alt:string
+}
 
 const Recipe = () => {
 
-    const recipeHard = 
-    [
-        {
-            name:"Versez ½ tasse de mélange de glaçons ou un gros glaçon,"
-        }, 
-        {
-            name:"Versez 30ml de gin," 
-        }, 
-        {
-            name:"Ajoutez 30ml de vermouth rouge, " 
-        },
-        {
-            name:"Complétez avec 30ml de Campari"
-        },
-        {
-            name:"Vous pouvez mélanger légèrement les trois ingrédients à l’aide d’une cuillère à mélange / cuillère à cocktails"
-        },
+    const[error, setError] = useState(null)
+    const[recipes, setRecipes] = useState<recipeDataType[]>([])
 
-        {
-            name:"Pour une expérience gustative au top, garnissez le tout avec une écorce d’orange"  
-        },
-        {
-            name:"Vous n’avez plus qu’à déguster votre délicieux cocktail rafraîchissant."
-        }    
-    ]
+    useEffect(() => {
+        const fetchRecipe = async() =>  {
+            const{data:recipeData, error} = await supabase.from('recipes').select('id,image,name,recipe,is_favorite,alt');
+
+            if(error) {
+                console.error("Une erreur est survenue lors du chargement de la recette",error)
+            } else {
+                setRecipes(recipeData || []);
+                setError(null);
+            }
+        }
+        fetchRecipe();
+    },[])
+   
     return(
-        <>
-    {
-        recipeHard.map((recipeLine, index) => (
+        <View style={styles.recipeContainer}>
+        {
+            recipes.map((recipe) => (
+                <View >
+                    {
+                        recipe.recipe.map((lign) => (
 
-            
+                            <Text style={styles.textRecipe}> - {lign} </Text>
+                        ))
+                    }
+                </View>
+            ))
+        }
+        </View>
 
-                <Text style={styles.textRecipe} key={index}>- {recipeLine.name}</Text>
-
-        ))
-
-    }
-
-        </>
     )
 }
 
 const styles = StyleSheet.create({
     textRecipe:{
-        marginTop:8
+        marginTop:8,
+    },
+    recipeContainer: {
     }
+
 })
 export default Recipe;
