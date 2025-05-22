@@ -1,9 +1,13 @@
+import { Colors } from "@/constants/Colors"
 import { StyleSheet, Text, View, ViewStyle } from "react-native"
+
+// TYPE
 
 type ComponentsType = {
     index:number,
     name:string
 }
+const componentText:string ="Composants"
 
 
 const Components= ():ComponentsType[]=> {
@@ -36,8 +40,11 @@ const Components= ():ComponentsType[]=> {
     </Text>
     ))
     return(
-        <View style={styles.blockComponent}>
-            {displayComponents}
+        <View style={styles.componantContainer}>
+            <Text style={styles.componantTitle}>{componentText}</Text>
+            <View style={styles.blockComponent}>
+                {displayComponents}
+            </View>
         </View>
     )
 }
@@ -51,7 +58,17 @@ const styles = StyleSheet.create({
     textBlockComponent: {
         marginTop:5,
         fontWeight:"ultralight"
-    }
+    },
+        componantContainer: {
+        width:"30%",
+        borderRightWidth:1,
+        borderRightColor:Colors.secondary.red,
+     
+    } as ViewStyle,
+        componantTitle: {
+            fontFamily:'SpaceGrotesk-Regular',
+            fontWeight:"bold",
+        } as ViewStyle,
 })
 
 export default Components
