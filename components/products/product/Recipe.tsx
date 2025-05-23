@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 // REACT NATIVE
 
 import { Image, ImageStyle, StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native";
+import Components from "./Components";
 
 // TYPE
 
@@ -29,7 +30,7 @@ type recipeDataType = {
 const recipeText:string = "Recette"
 const Recipe = () => {
 
-    const {id} = useLocalSearchParams();
+    const {idRecipe} = useLocalSearchParams();
     const[error, setError] = useState(null)
     const[recipes, setRecipes] = useState<recipeDataType | null>(null)
 
@@ -41,7 +42,7 @@ const Recipe = () => {
             const{data:recipeData, error} = await supabase
             .from('recipes')
             .select('id,image,name,recipe,is_favorite,alt')
-            .eq("id", Number(id))
+            .eq("id", Number(idRecipe))
             .single();
 
             if(error) {
@@ -51,11 +52,11 @@ const Recipe = () => {
                 setError(null);
             }
         }
-        if(id) {
+        if(idRecipe) {
 
             fetchRecipe();
         }
-    },[id])
+    },[idRecipe])
    
     if(!recipes) {
         return null
@@ -77,14 +78,19 @@ const Recipe = () => {
         </View>
       </View>
 
-      
-      <View style={styles.recipeContainer}>
-        <Text style={styles.componantTitle}>{recipeText}</Text>
-        {recipes.recipe.map((line, index) => (
-          <Text key={index} style={styles.textRecipe}>
-            - {line}
-          </Text>
-        ))}
+      <View style={styles.containerRecipeAndComponent}>
+
+        <Components />
+
+        <View style={styles.recipeContainer}>
+          <Text style={styles.componantTitle}>{recipeText}</Text>
+          {recipes.recipe.map((line, index) => (
+            <Text key={index} style={styles.textRecipe}>
+              - {line}
+            </Text>
+          ))}
+        </View>
+
       </View>
     </>
   );
@@ -131,6 +137,11 @@ const styles = StyleSheet.create({
   componantTitle: {
     fontFamily: 'SpaceGrotesk-Regular',
     fontWeight: "bold",
-  } as TextStyle
+  } as TextStyle,
+  containerRecipeAndComponent:{
+    display:"flex",
+    flexDirection:"row",
+    top:30
+  } as ViewStyle
 });
 export default Recipe;

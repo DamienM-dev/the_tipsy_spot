@@ -65,7 +65,7 @@ const CocktailMoment = () => {
         <TouchableOpacity 
             key={cocktail.id} 
             style={[styles.containerCocktailMoment, StylesSame.cardsCocktail]}
-            onPress={() => router.push({ pathname: '/ProductScreen', params: { id: cocktail.id.toString() } })} >
+            onPress={() => router.push({ pathname: '/ProductScreen', params: { idRecipe: cocktail.id.toString() } })} >
 
             <Image 
                 source={{uri:cocktail.image}} 
