@@ -3,13 +3,13 @@ import { Colors } from "@/constants/Colors"
 import { StylesSame } from "@/constants/StyleSame"
 import { supabase } from "@/lib/supabase"
 import { useEffect, useState } from "react"
-import { Image, ImageStyle, ScrollView, StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native"
+import { Image, ImageStyle, ScrollView, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle } from "react-native"
 
 
 // type
 
 type genreCocktail = {
-    id:number,
+    id_general_type:number,
     type:string,
     image:string,
     alt:string
@@ -25,11 +25,13 @@ const ByGenre = () => {
     useEffect(() => {
         const fetchGenre = async() => {
     
-            const {data:genres, error} = await supabase.from('generalType').select('id, type, image, alt');
+            const {data:genres, error} = await supabase
+            .from('general_type')
+            .select('id_general_type, type, image, alt');
     
             if(error) {
+                console.error("Une erreur lors de la récupération des genre",error)
                 setFetchError(error)
-                console.error("Une erreur lors de la récupération des genre")
             } else {
                 setGenreCocktail(genres || [])
                 setFetchError(null)
@@ -46,13 +48,18 @@ const ByGenre = () => {
             {
                 genresCocktail.map((cocktail) => (
 
-        <View key = {cocktail.id} style={[styles.containerGenre, StylesSame.cardsCocktail ]}>
+        <TouchableOpacity 
+            key = {cocktail.id_general_type} 
+            style={[styles.containerGenre, StylesSame.cardsCocktail ]} 
+            // onPress={}
+        >
             <Image 
                 source={{uri:cocktail.image}}
                 alt={cocktail.alt} 
                 style={styles.imageGenre}
+    
                 />
-        </View>
+        </TouchableOpacity>
 
                 ))
             }

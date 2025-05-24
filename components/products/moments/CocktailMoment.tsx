@@ -20,7 +20,7 @@ import { supabase } from "@/lib/supabase"
 // TYPE
 
 type Cocktails = {
-    id:number,
+    id_recipes:number,
     image:string,
     name:string,
     recipe:string,
@@ -41,10 +41,11 @@ const CocktailMoment = () => {
             
             const {data:cocktails, error} = await supabase
             .from('recipes')
-            .select('id,image, name, recipe,is_favorite,alt');
+            .select('id_recipes,image, name, recipe,is_favorite,alt');
+            
            
             if(error){
-                fetchError('Une erreur est survenue lors du chargement des cocktail');
+                fetchError('Une erreur est survenue lors du chargement des cocktail,');
                 console.error(error)
             } else {
                 fetchCocktailData(cocktails)
@@ -63,9 +64,9 @@ const CocktailMoment = () => {
                 cocktailData.map((cocktail) => (
 
         <TouchableOpacity 
-            key={cocktail.id} 
+            key={cocktail.id_recipes} 
             style={[styles.containerCocktailMoment, StylesSame.cardsCocktail]}
-            onPress={() => router.push({ pathname: '/ProductScreen', params: { idRecipe: cocktail.id.toString() } })} >
+            onPress={() => router.push({ pathname: '/ProductScreen', params: { idRecipe: cocktail.id_recipes.toString() } })} >
 
             <Image 
                 source={{uri:cocktail.image}} 

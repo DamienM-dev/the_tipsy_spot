@@ -9,9 +9,10 @@ import { useEffect, useState } from "react"
 // TYPE
 
 type iconeTop = {
-    
+    id_drinks:number,
+    type:string,
     image:string,
-    type_of_drink:string
+    alt:string,
 }
 
 
@@ -24,7 +25,9 @@ const IconesTop = () => {
     useEffect(() => {
         const fetchIcones = async() => {
 
-            const {data:drinks, error} = await supabase.from('drinks').select('type_of_drink, image')
+            const {data:drinks, error} = await supabase
+            .from('drinks')
+            .select('id_drinks,type,image,alt')
 
             if(error) {
                 setFetchError('erreur lors de la récupération de drinks');
@@ -38,23 +41,25 @@ const IconesTop = () => {
         };
         fetchIcones()
     }, [])
-
+    
 
     return(
         <ScrollView 
-            horizontal
-            showsHorizontalScrollIndicator ={false}
-            style={styles.containerGenralIcones}>
+        horizontal
+        showsHorizontalScrollIndicator ={false}
+        style={styles.containerGenralIcones}>
             {
                 icones.map((icone, index) =>(
-
-                   <TouchableOpacity
-                        key={index}>
-
-                        <View key={index} style={styles.containerIcone}>
+                
+                    <TouchableOpacity
+                    key={index}>
                         
-                            <Image source={{uri:icone.image}} style={styles.image} />
-                            <Text style={styles.text}>{icone.type_of_drink}</Text>
+                        <View style={styles.containerIcone}>
+                        
+                            <Image 
+                            source={{uri:icone.image}}
+                            alt={icone.alt} style={styles.image} />
+                            <Text style={styles.text}>{icone.type}</Text>
                         </View>
                    </TouchableOpacity>
                 ))
@@ -93,7 +98,8 @@ text:{
     color:Colors.textColor.black,
     fontSize:14,
     fontWeight:"bold",
-    fontFamily:'SpaceGrotesk-Regular'
+    fontFamily:'SpaceGrotesk-Regular',
+
 }
 })
 

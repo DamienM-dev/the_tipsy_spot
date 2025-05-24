@@ -20,7 +20,7 @@ import Components from "./Components";
 // TYPE
 
 type recipeDataType = {
-    id: number,
+    id_recipes: number,
     image: string,
     name: string,
     recipe: string[],
@@ -41,9 +41,11 @@ const Recipe = () => {
         const fetchRecipe = async() =>  {
             const{data:recipeData, error} = await supabase
             .from('recipes')
-            .select('id,image,name,recipe,is_favorite,alt')
-            .eq("id", Number(idRecipe))
+            .select('id_recipes,image,name,recipe,is_favorite,alt')
+            .eq("id_recipes", Number(idRecipe))
             .single();
+            
+
 
             if(error) {
                 console.error("Une erreur est survenue lors du chargement de la recette",error)
