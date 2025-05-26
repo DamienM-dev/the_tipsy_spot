@@ -43,7 +43,7 @@ const Components = () => {
         quantity_of: item.quantity_of,
         symbole: item.quantity?.symbole ?? "",
       }));
-      console.log(parsed)
+      
 
       setComponents(parsed);
    

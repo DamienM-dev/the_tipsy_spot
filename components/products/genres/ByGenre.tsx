@@ -1,7 +1,10 @@
 
+
+
 import { Colors } from "@/constants/Colors"
 import { StylesSame } from "@/constants/StyleSame"
 import { supabase } from "@/lib/supabase"
+import { useRouter } from "expo-router"
 import { useEffect, useState } from "react"
 import { Image, ImageStyle, ScrollView, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle } from "react-native"
 
@@ -18,6 +21,11 @@ type genreCocktail = {
 
 
 const ByGenre = () => {
+
+    // Permet d'utiliser le router d'expo pour passer d'une page à l'autre facilement
+    const router = useRouter()
+
+    
 
     const [error, setFetchError] = useState(null);
     const [genresCocktail, setGenreCocktail] = useState<genreCocktail[]>([])
@@ -51,7 +59,7 @@ const ByGenre = () => {
         <TouchableOpacity 
             key = {cocktail.id_general_type} 
             style={[styles.containerGenre, StylesSame.cardsCocktail ]} 
-            // onPress={}
+            onPress={() => router.push({pathname:"/GenreScreen", params:{idGenre:cocktail.id_general_type}})}
         >
             <Image 
                 source={{uri:cocktail.image}}

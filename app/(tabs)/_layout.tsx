@@ -27,14 +27,10 @@ export default function TabLayout() {
 },
     headerTintColor:Colors.textColor.black,
     }} />
-    <Stack.Screen name='ListProductsScreen'options={{title:"Cocktails", 
-       headerBackTitleStyle:{
-        fontFamily:"Manrope-Regular"
-},
-    headerTintColor:Colors.textColor.black
-    }} />
+    <Stack.Screen name='ListProductsScreen'options={{headerShown:false}} />
     
     <Stack.Screen name="ProductScreen" options={{headerShown:false}}/>
+    <Stack.Screen name="GenreScreen" options={{headerShown:false}} />
    </Stack>
   );
 }

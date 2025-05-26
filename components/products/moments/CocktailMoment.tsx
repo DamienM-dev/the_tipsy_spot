@@ -41,7 +41,8 @@ const CocktailMoment = () => {
             
             const {data:cocktails, error} = await supabase
             .from('recipes')
-            .select('id_recipes,image, name, recipe,is_favorite,alt');
+            .select('id_recipes,image, name, recipe,is_favorite,alt')
+            .limit(4)
             
            
             if(error){
