@@ -1,4 +1,5 @@
 
+
 // SUPABASE
 
 import { Colors } from "@/constants/Colors";
@@ -25,9 +26,11 @@ type recipeDataType = {
     name: string,
     recipe: string[],
     is_favorite: boolean,
-    alt:string
+    alt:string,
+    text:string
 }
 const recipeText:string = "Recette"
+const history:string = "Histoire"
 const Recipe = () => {
 
     const {idRecipe} = useLocalSearchParams();
@@ -41,7 +44,7 @@ const Recipe = () => {
         const fetchRecipe = async() =>  {
             const{data:recipeData, error} = await supabase
             .from('recipes')
-            .select('id_recipes,image,name,recipe,is_favorite,alt')
+            .select('id_recipes,image,name,recipe,is_favorite,alt,text')
             .eq("id_recipes", Number(idRecipe))
             .single();
             
@@ -92,8 +95,13 @@ const Recipe = () => {
             </Text>
           ))}
         </View>
+        
 
       </View>
+        <View style={styles.containerHistory}>
+          <Text style={styles.titleHistory}>{history}</Text>
+          <Text>{recipes.text}</Text>
+        </View>
     </>
   );
 };
@@ -144,6 +152,18 @@ const styles = StyleSheet.create({
     display:"flex",
     flexDirection:"row",
     top:30
-  } as ViewStyle
+  } as ViewStyle,
+  containerHistory:{
+    marginTop:40,
+    marginHorizontal:6,
+    borderTopWidth:1,
+    borderTopColor:Colors.secondary.red,
+  } as ViewStyle,
+  titleHistory: {
+   fontFamily: 'SpaceGrotesk-Regular',
+   fontWeight: "bold",
+   marginBottom:8,
+   marginTop:6,
+ } as TextStyle
 });
 export default Recipe;
