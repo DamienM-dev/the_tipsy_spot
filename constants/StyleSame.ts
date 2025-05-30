@@ -14,7 +14,7 @@ export const StylesSame = {
         width:140,
         height:200,
         borderRadius:28,
-        marginLeft:25,
+        marginHorizontal: 10,
         marginTop:30,
     } as ViewStyle,
     imageCocktailCards:{
@@ -26,8 +26,7 @@ export const StylesSame = {
         } as ImageStyle,
         titleCocktailCards: {
             fontSize:18,
-            fontWeight:"bold",
-            fontFamily:"SpaceGrotesk-Regular",
+            fontFamily:"SpaceGrotesk-Bold",
             marginTop:27,
             textAlign:"center",
         } as TextStyle,

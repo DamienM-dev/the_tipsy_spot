@@ -14,7 +14,8 @@ export default function Layout() {
   const[fontsLoaded] = useFonts({
 
     'Manrope-Regular':require('../assets/fonts/Manrope/Manrope-Regular.ttf'),
-    'SpaceGrotesk-Regular':require('../assets/fonts/SpaceGrotesk/SpaceGrotesk-Regular.ttf')
+    'SpaceGrotesk-Regular':require('../assets/fonts/SpaceGrotesk/SpaceGrotesk-Regular.ttf'),
+    'SpaceGrotesk-Bold':require('../assets/fonts/SpaceGrotesk/SpaceGrotesk-Bold.ttf')
   });
 
   useEffect(() => {

@@ -98,10 +98,12 @@ const Recipe = () => {
         
 
       </View>
-        <View style={styles.containerHistory}>
-          <Text style={styles.titleHistory}>{history}</Text>
-          <Text>{recipes.text}</Text>
-        </View>
+      <View style={styles.borderHistory}>
+          <View style={styles.containerHistory}>
+            <Text style={styles.titleHistory}>{history}</Text>
+            <Text>{recipes.text}</Text>
+          </View>
+      </View>
     </>
   );
 };
@@ -123,8 +125,7 @@ const styles = StyleSheet.create({
   } as ImageStyle,
   titleStyle: {
     fontSize: 20,
-    fontFamily: 'SpaceGrotesk-Regular',
-    fontWeight: "bold"
+    fontFamily: 'SpaceGrotesk-Bold',
   } as TextStyle,
   blockTitle: {
     display: "flex",
@@ -145,23 +146,24 @@ const styles = StyleSheet.create({
     width: "100%",
   } as ViewStyle,
   componantTitle: {
-    fontFamily: 'SpaceGrotesk-Regular',
-    fontWeight: "bold",
+    fontFamily: 'SpaceGrotesk-Bold',
   } as TextStyle,
   containerRecipeAndComponent:{
     display:"flex",
     flexDirection:"row",
     top:30
   } as ViewStyle,
-  containerHistory:{
-    marginTop:40,
-    marginHorizontal:6,
+  borderHistory:{
     borderTopWidth:1,
     borderTopColor:Colors.secondary.red,
+    marginTop:40,
+  }as ViewStyle,
+  containerHistory:{
+    marginHorizontal:6,
+    
   } as ViewStyle,
   titleHistory: {
-   fontFamily: 'SpaceGrotesk-Regular',
-   fontWeight: "bold",
+   fontFamily: 'SpaceGrotesk-Bold',
    marginBottom:8,
    marginTop:6,
  } as TextStyle

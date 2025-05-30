@@ -83,8 +83,8 @@ const styles = StyleSheet.create({
     paddingHorizontal:8
   } as ViewStyle,
   componantTitle: {
-    fontFamily: "SpaceGrotesk-Regular",
-    fontWeight: "bold",
+    fontFamily: 'SpaceGrotesk-Bold',
+    
   } as ViewStyle,
 });
 

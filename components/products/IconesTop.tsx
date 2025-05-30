@@ -5,6 +5,7 @@ import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "rea
 
 import { supabase } from "@/lib/supabase"
 import { useEffect, useState } from "react"
+import {useRouter } from "expo-router"
 
 // TYPE
 
@@ -15,7 +16,7 @@ type iconeTop = {
     alt:string,
 }
 
-
+const router = useRouter()
 
 const IconesTop = () => {
 
@@ -52,7 +53,8 @@ const IconesTop = () => {
                 icones.map((icone, index) =>(
                 
                     <TouchableOpacity
-                    key={index}>
+                    key={index}
+                    onPress={() => router.push({pathname:'/ProductsByAlcoolScreen', params:{id_alcool:icone.id_drinks}})}>
                         
                         <View style={styles.containerIcone}>
                         
@@ -85,7 +87,7 @@ height:60,
 flexDirection:"row",
 alignItems:"center",
 justifyContent:"center",
-borderBlockColor:Colors.secondary.red,
+borderColor:Colors.secondary.red,
 borderWidth:1,
 borderRadius:16,
 
@@ -97,8 +99,7 @@ image:{
 text:{
     color:Colors.textColor.black,
     fontSize:14,
-    fontWeight:"bold",
-    fontFamily:'SpaceGrotesk-Regular',
+    fontFamily:'SpaceGrotesk-Bold',
 
 }
 })

@@ -5,13 +5,13 @@ import { Colors } from "@/constants/Colors"
 //SUPABSE
 import { supabase } from "@/lib/supabase"
 //EXPO ROUTER
-import { useLocalSearchParams } from "expo-router"
+import { useLocalSearchParams, useRouter } from "expo-router"
 //REACT
 import { useEffect, useState } from "react"
 
 // REACT NATIVE
 
-import { Image, ImageStyle, ScrollView, Text, TextStyle, View, ViewStyle } from "react-native"
+import { Image, ImageStyle, ScrollView, Text, TextStyle, TouchableOpacity, View, ViewStyle } from "react-native"
 
 
 //TYPE
@@ -29,6 +29,9 @@ type GeneralTypeInfo = {
   image_illustration: string;
   text: string;
 };
+
+const router = useRouter()
+const {idRecipe} = useLocalSearchParams()
 
 const errorLoadingImage:string ="Désolé, une erreur est survenue pendant le chargement de l'image"
 const cocktailType:string ="Les cocktails "
@@ -59,7 +62,6 @@ const ByGenreRecipes = () => {
             
             if(error) {
                 console.error("une erreur est survenue lors du chargement des recettes par genre", error)
-                setError(error)
                 return;
             } else {
                 
@@ -91,6 +93,7 @@ const ByGenreRecipes = () => {
     },[idGenre])
     
     
+    
     return(
         
         <ScrollView style={styles.containerGen}>
@@ -120,7 +123,7 @@ const ByGenreRecipes = () => {
 
 
                 <View>
-                    <Text style={styles.titleStyle}>{cocktailType}{generalInfo?.type}s</Text>
+                    <Text style={styles.titleStyle}>{cocktailType}{generalInfo?.type}</Text>
                     <Text style={styles.textStyle}>{generalInfo?.text}</Text>
                 </View>
                     
@@ -129,9 +132,10 @@ const ByGenreRecipes = () => {
                recipes.map((recipe, index) => (
                    <>
             
-                <View 
+                <TouchableOpacity
                     key={index}
-                    style={styles.cardContainer}>
+                    style={styles.cardContainer} 
+                    onPress={() => router.push({pathname:"/ProductScreen", params:{idRecipe:recipe.id_recipes }})}>
                     <View style={styles.imageContainer}>
                         <Image 
                             source={{uri:recipe.image}}
@@ -139,13 +143,19 @@ const ByGenreRecipes = () => {
                             style={styles.cardImage}
                         />
                     </View>
-                    <View style={styles.cardContain}>
-                        <View style={styles.cardContainText}>
+                    <View
+                    key={recipe.name}
+                    style={styles.cardContain}
+                    >
+                        <View 
+                        key={recipe.id_recipes}
+                        style={styles.cardContainText}>
                             <Text style={styles.cardTitle}>{recipe.name}</Text>
                             <Text style={styles.cardText}>{recipe.text}</Text>
                         </View>
                     </View>
-                </View>
+                </TouchableOpacity>
+
                 </>
             ))
            }
@@ -172,8 +182,8 @@ const styles = {
     } as ViewStyle,
     titleStyle:{
         fontSize:25,
-        fontFamily:"SpaceGrotesk-Regular",
-        fontWeight:"bold",
+        fontFamily:'SpaceGrotesk-Bold',
+        
         color:Colors.textColor.black,
         marginBottom:8,
     } as TextStyle,
@@ -212,8 +222,7 @@ const styles = {
     } as ImageStyle,
     cardTitle:{
         fontSize:15,
-        fontFamily:"SpaceGrotesk-Regular",
-        fontWeight:"bold",
+        fontFamily:'SpaceGrotesk-Bold',
         color:Colors.textColor.black,
         marginTop:8,
         

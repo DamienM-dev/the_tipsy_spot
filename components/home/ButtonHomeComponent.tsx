@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
         marginHorizontal:45,
         marginBottom:30,
         alignItems:"center",
+        fontFamily:"Manrope-Regular",
     } as ViewStyle,
     buttonTextHome:{
         fontFamily:"Manrope-Regular",

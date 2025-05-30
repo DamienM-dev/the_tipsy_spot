@@ -1,5 +1,5 @@
 // REACT NATIVE
-import { ScrollView, StyleSheet, Text, View, ViewStyle } from "react-native"
+import { ScrollView, StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native"
 
 //CONSTANT
 
@@ -34,10 +34,10 @@ const ListProducts = () => {
         <ScrollView style={styles.containerPrincipal}>
             <View style={styles.containerDiscovey}>
                 <View style={styles.styleSelected}>
-                    <Text>{textDecouvert}</Text>
+                    <Text style={styles.textStyle}>{textDecouvert}</Text>
                 </View>
                 <View>
-                    <Text>{textFavorit}</Text>
+                    <Text style={styles.textStyle}>{textFavorit}</Text>
                 </View>
             </View>
             <View style={styles.containerIcones}>
@@ -65,7 +65,10 @@ styleSelected: {
 } as ViewStyle,
 containerIcones: {
     flexDirection:"row",
-    }
+    } as ViewStyle,
+    textStyle:{
+        fontFamily:"Manrope-Regular",
+    } as TextStyle,
 })
 
 export default ListProducts

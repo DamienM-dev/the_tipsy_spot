@@ -7,8 +7,7 @@ import { Colors } from "@/constants/Colors"
 
 //COMPOSANT
 import ButtonHomeComponent from "./ButtonHomeComponent"
-import { useNavigation } from "expo-router"
-import { useEffect } from "react"
+
 
 const Home = (props:any) => {
     const buttonPropsRegistration = {

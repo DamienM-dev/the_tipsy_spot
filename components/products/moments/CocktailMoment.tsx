@@ -88,16 +88,14 @@ const CocktailMoment = () => {
 //PENSER A REGARDER POURQUOI LES FONTS NE SEMBLENT PAS FONCTIONNER !!!
 
 const styles = StyleSheet.create({
-    mainContainer: {
-    
-        display:"flex",
-       
-    } as ViewStyle,
+   
     containerIncipalCards: {
         display:"flex",
         justifyContent:"center",
         flexDirection:"row",
         flexWrap:"wrap",
+        gap: 0,
+        paddingHorizontal: 10,
 
     } as ViewStyle, 
     containerCocktailMoment:{

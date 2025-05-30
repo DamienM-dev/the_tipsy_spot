@@ -31,6 +31,7 @@ export default function TabLayout() {
     
     <Stack.Screen name="ProductScreen" options={{headerShown:false}}/>
     <Stack.Screen name="GenreScreen" options={{headerShown:false}} />
+    <Stack.Screen name="ProductsByAlcoolScreen" options={{headerShown:false}} />
    </Stack>
   );
 }
