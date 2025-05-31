@@ -99,10 +99,10 @@ const styles = ({
         boxShadow:""
     } as ViewStyle,
     containerImage:{
-        height:"70%",
+        height:"80%",
     } as ViewStyle,
     containerText:{
-        height:"30%",
+        height:"20%",
         padding:10,
     } as ViewStyle,
     textCards:{
