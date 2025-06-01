@@ -1,8 +1,9 @@
+import { Redirect } from "expo-router"
 
-import HomeScreen from '@/components/home/Home';
-
-export default function HomePage() {
-  return (
-  <HomeScreen />
+const Index = () => {
+return(
+    <Redirect href={"/(tabs)/HomeScreen"} />
 )
 }
+
+export default Index

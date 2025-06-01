@@ -1,42 +1,72 @@
-
-import React from 'react';
-
-import { Stack } from 'expo-router';
+import { Tabs } from 'expo-router';
 import { Colors } from '@/constants/Colors';
+import { Ionicons } from '@expo/vector-icons'; 
 
-export default function TabLayout() {
-  
-  const styleNavigation = {
-    headerBackTitleStyle:{
-        fontFamily:"Manrope-Regular"
-},
-    headerTintColor:Colors.textColor.black,
-    headerStyle:{
-        borderBottomColor: Colors.secondary.red,
-        borderBottomWidth:1
-    }
- 
-}
-
+const TabLayout = () => {
   return (
-   <Stack>
-    <Stack.Screen name='HomeScreen' options={{
-      headerShown:false,
-      headerBackTitleStyle:{
-        fontFamily:"Manrope-Regular"
-},
-    headerTintColor:Colors.textColor.black,
-    }} />
-    <Stack.Screen name='ListProductsScreen'
-    options={{
-      headerShown:false
-      }} />
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: Colors.secondary.red,
+        tabBarInactiveTintColor: 'gray',
+        tabBarStyle: {
+          
+          borderTopColor: Colors.secondary.red,
+          borderTopWidth: 1,
+        },
+        headerShown: false,
+      }}
+    >
+      <Tabs.Screen
+  name="HomeScreen"
+  options={{
+    title: 'Accueil',
+    tabBarIcon: ({ color, size }) => <Ionicons 
+    name="home-outline" 
+    color={color} 
+    size={size} />,
+  }}
+/>
+   
+      <Tabs.Screen
+        name="ProfileScreen"
+        options={{
+          title: 'Profil',
+          tabBarIcon: ({ color, size }) => <Ionicons 
+          name="person-outline" 
+          color={color} 
+          size={size} />,
+        }}
+      />
+      {/* Icone exclue de a tab bar, il doit y avoir une meilleur méthode mais je n'arrive pas à trouver la quel */}
+      <Tabs.Screen
+      name="GenreScreen"
+      options={{href:null}} 
+      />
+     
+      <Tabs.Screen
+      name="index"
+      options={{href:null}} 
+      />
+      <Tabs.Screen
+      name="ListProductsScreen"
+      options={{href:null}} 
+      />
+      <Tabs.Screen
+      name="ProductsByAlcoolScreen"
+      options={{href:null}} 
+      />
+      <Tabs.Screen
+      name="ProductScreen"
+      options={{href:null}} 
+      />
+      {/* <Tabs.Screen
+      name="HomeScreen"
+      options={{href:null}} /> */}
+
+      
+    </Tabs>
     
-    <Stack.Screen name="ProductScreen" options={{headerShown:false}}/>
-    <Stack.Screen name="GenreScreen" options={{headerShown:false}} />
-    <Stack.Screen name="ProductsByAlcoolScreen"
-    options={{
-      title:"Les cocktails"}}/>
-   </Stack>
   );
 }
+
+export default TabLayout

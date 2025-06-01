@@ -54,9 +54,13 @@ const IconesTop = () => {
                 
                     <TouchableOpacity
                     key={index}
-                    onPress={() => router.push({pathname:'/ProductsByAlcoolScreen', params:{id_alcool:icone.id_drinks}})}>
-                        
+                    onPress={() => router.push({
+                        pathname:'/ProductsByAlcoolScreen', 
+                        params:{
+                            id_alcool:icone.id_drinks, 
+                            type_alcool:icone.type}})}>
                         <View style={styles.containerIcone}>
+                        
                         
                             <Image 
                             source={{uri:icone.image}}
