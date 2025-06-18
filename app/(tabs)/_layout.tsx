@@ -60,8 +60,9 @@ const TabLayout = () => {
       options={{href:null}} 
       />
       {/* <Tabs.Screen
-      name="HomeScreen"
-      options={{href:null}} /> */}
+      name='screen/RegisterScreen'
+      options={{href:null}} 
+      /> */}
 
       
     </Tabs>

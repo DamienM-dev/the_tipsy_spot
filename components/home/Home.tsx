@@ -33,7 +33,7 @@ const Home = (props:any) => {
                 style={styles.imageHome} />
             </View>
             <View style={styles.blockButtonsHome}>
-                <ButtonHomeComponent {...buttonPropsRegistration} pageToNavigate="/ListProductsScreen"/>
+                <ButtonHomeComponent {...buttonPropsRegistration} pageToNavigate="/screen/RegisterScreen"/>
                 <ButtonHomeComponent {...buttonPorpsMail} pageToNavigate="/ListProductsScreen"/>
             </View>
             
